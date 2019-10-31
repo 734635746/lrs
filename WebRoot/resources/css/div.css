@@ -1,0 +1,119 @@
+* { 
+	margin:0px; 
+	padding:0px;
+}
+html, body{	
+	height:100%;
+	overflow:auto ;
+
+}
+html>body{		/*-- for !IE6.0 --*/
+	width: auto;
+	height: auto;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	right: 0px;
+	bottom: 0px;
+	
+}
+body {
+	border:8px solid #ffffff;
+	background-color: #ffffff;min-width:230px;
+}
+
+#centerDiv{
+	width: 100%;
+	height: 100%;
+	background-color:#00CCFF;
+	padding-left:158px;
+}
+#mainDiv>#centerDiv{		/*-- for !IE6.0 --*/	
+	width: auto;
+	height: auto;
+	position: absolute;
+	top: 56px;
+	left: 0px;
+	right: 0px;
+	bottom: 20px;
+	
+}
+#left{
+width:150px;
+height:100%;
+background:url(slide.jpg) repeat-y;
+position:absolute;
+left:170px;
+background-color:grey;
+font-family:"����";
+}
+#lhead{
+background:url(${pageContext.request.contextPath}/resources/images/cell-blue.jpg) left top no-repeat;
+height:25px;
+	font-size:14px;
+	color:#FF9933;
+    text-align:center;
+	line-height:25px;
+}
+#right{
+width:61%;
+height:100%;
+background:#ffffff;
+position:absolute;
+overflow-y:scroll;
+
+padding:20px 0 0 10px;
+font-size:12px;
+font-family:"����";
+left:325px;
+}
+#centerDiv>#right{
+width:auto;
+height:auto;
+position:absolute;
+top:0px;
+right:0px;
+left:158px;
+bottom:0px;
+}
+
+#current{
+background:#ccc;
+height:25px;
+line-height:25px;
+margin:-20px 0 0 -10;
+overflow:hidden;
+}
+#bottomDiv{
+	width:100%;
+	height:20px;
+	background:url(bottom.jpg) repeat-x;
+	position:absolute;
+	bottom:0px;
+	bottom:-1px;		 /*-- for IE6.0 --*/
+}
+#left ul{
+list-style:none;
+font-size:12px;
+margin:50px 0 0 8px;
+}
+#left ul li a{
+display:block;
+width:120px;
+height:25px;
+line-height:25px;
+background:url(menu-bg.jpg) repeat-x;
+color:blue;
+direction:none;
+text-align:center;
+border-bottom:1px #000066 solid;
+border:1px #06597D solid;
+}
+
+
+fieldset{
+width:100%;
+margin:20 auto;
+line-height:35px;
+padding-left:20PX;
+}

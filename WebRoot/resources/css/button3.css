@@ -1,0 +1,22 @@
+.button {
+	background: blue repeat-x top center;
+	border: 1px solid #999;
+	-moz-border-radius: 5px;
+	padding: 5px;
+	color: white;
+	font-weight: bold;
+	-webkit-border-radius: 5px;
+	font-size: 13px;
+	width: 120px;
+	opacity: .6;
+}
+
+.button:hover {
+	background: white;
+	color: blue;
+}
+
+.button:active {
+	background: white;
+	color: red;
+}

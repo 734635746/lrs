@@ -1,0 +1,245 @@
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@include file="/context/mytags.jsp"%>
+
+<html>
+  <head>
+    <base href="<%=basePath%>">
+    <t:base type="jquery,easyui,tools,DatePicker"></t:base>
+    <title></title>
+    <style>
+	.r{position:fixed; bottom:225px;right:345px;}
+	.info{text-align:center;}
+	</style>
+	<script language="javascript" src="${pageContext.request.contextPath}/plug-in/jquery/jquery-1.8.3.js"></script>	
+	<script language="javascript" src="${pageContext.request.contextPath}/plug-in/jquery/jquery-1.8.3.min.js"></script>	
+	<script language="javascript" src="${pageContext.request.contextPath}/plug-in/jquery/jquery.jqprint.js"></script>	
+ 	<script type="text/javascript">
+	function printInfo(){
+		$('#forinfo').jqprint();
+	}
+	</script>
+  </head>
+  
+  <body>
+   <div class="info" id="forinfo">
+   <table cellspacing="0" cellpadding="0" style="border-collapse:collapse; float:left; margin:0pt 9pt; width:578.35pt">
+    <tbody>
+     <tr style="height:11.35pt">
+      <td style="padding-left:5.4pt; padding-right:5.4pt; vertical-align:top; width:6.2pt"><p style="margin:0pt; orphans:0; text-align:justify; widows:0"><span style="font-family:Calibri; font-size:10.5pt">&nbsp;</span></p></td>
+      <td style="padding-left:5.4pt; padding-right:5.4pt; vertical-align:top; width:522.2pt"><p style="margin:0pt; orphans:0; text-align:justify; widows:0"><span style="font-family:Calibri; font-size:10.5pt">&nbsp;</span></p></td>
+      <td style="padding-left:5.4pt; padding-right:5.4pt; vertical-align:top; width:17.55pt"><p style="margin:0pt; orphans:0; text-align:justify; widows:0"><span style="font-family:Calibri; font-size:10.5pt">&nbsp;</span></p></td>
+     </tr>
+     <tr style="height:225.6pt">
+      <td style="padding-left:5.4pt; padding-right:5.4pt; vertical-align:top; width:6.2pt"><p style="margin:0pt; orphans:0; text-align:justify; widows:0"><span style="font-family:Calibri; font-size:10.5pt">&nbsp;</span></p></td>
+      <td style="padding-left:5.4pt; padding-right:5.4pt; vertical-align:top; width:522.2pt">
+       <table cellspacing="0" cellpadding="0" style="border-collapse:collapse; margin-left:0pt; width:525.8pt">
+        <tbody>
+         <tr style="height:27.4pt">
+          <td colspan="3" style="border-bottom-color:#000000; border-bottom-style:solid; border-bottom-width:0.75pt; padding-left:5.4pt; padding-right:5.4pt; vertical-align:top; width:514.75pt"><p style="margin:0pt; orphans:0; widows:0"><span style="font-family:黑体; font-size:18pt; font-weight:bold">广 州 市 六 榕 寺 收 据&nbsp; </span>
+          
+          <span style="font-family:Calibri; font-size:12pt">LRNo:</span>  
+		  <span style="color:#ff0000; font-family:Calibri; font-size:12pt"> ${returnRe.no}</span>
+		  
+		  </p></td>
+         </tr>
+         <tr style="height:5.8pt">
+          <td colspan="2" style="border-bottom-color:#000000; border-bottom-style:solid; border-bottom-width:0.75pt; border-left-color:#000000; border-left-style:solid; border-left-width:0.75pt; border-top-color:#000000; border-top-style:solid; border-top-width:0.75pt; padding-left:5.03pt; padding-right:5.4pt; vertical-align:top; width:325.55pt"><p style="margin:0pt; orphans:0; text-align:justify; widows:0"><span style="font-family:Calibri; font-size:10.5pt">&nbsp;</span></p></td>
+          <td style="border-bottom-color:#000000; border-bottom-style:solid; border-bottom-width:0.75pt; border-right-color:#000000; border-right-style:solid; border-right-width:0.75pt; border-top-color:#000000; border-top-style:solid; border-top-width:0.75pt; padding-left:5.4pt; padding-right:5.03pt; vertical-align:top; width:178.4pt">
+          <p style="margin:0pt; orphans:0; text-align:right; widows:0">
+             <span style="font-family:宋体; font-size:10.5pt">开票日期：</span>
+		     <span style="color:#ff0000; font-family:Calibri; font-size:10.5pt">${returnRe.registertime}</span>
+		  
+		  </p></td>
+         </tr>
+         <tr style="height:5.8pt">
+          <td colspan="3" style="border-left-color:#000000; border-left-style:solid; border-left-width:0.75pt; border-right-color:#000000; border-right-style:solid; border-right-width:0.75pt; border-top-color:#000000; border-top-style:solid; border-top-width:0.75pt; padding-left:5.03pt; padding-right:5.03pt; vertical-align:top; width:514.75pt"><p style="margin:0pt; orphans:0; text-align:justify; widows:0">
+		  <span style="font-family:宋体; font-size:10.5pt; font-weight:bold">摘要</span>
+		  <span style="font-family:宋体; font-size:10.5pt; font-weight:bold">:</span>
+		  <br/>
+		  <span style="font-family:宋体; font-size:10.5pt;">${returnRe.summary}</span>
+		  </p></td>
+         </tr>
+         <tr style="height:5.8pt">
+          <td colspan="3" style="border-left-color:#000000; border-left-style:solid; border-left-width:0.75pt; border-right-color:#000000; border-right-style:solid; border-right-width:0.75pt; padding-left:5.03pt; padding-right:5.03pt; vertical-align:top; width:514.75pt"><p style="margin:0pt; orphans:0; text-align:justify; widows:0"><span style="font-family:Calibri; font-size:10.5pt">&nbsp;</span></p></td>
+         </tr>
+         <tr style="height:5.8pt">
+          <td colspan="3" style="border-left-color:#000000; border-left-style:solid; border-left-width:0.75pt; border-right-color:#000000; border-right-style:solid; border-right-width:0.75pt; padding-left:5.03pt; padding-right:5.03pt; vertical-align:top; width:514.75pt"><p style="margin:0pt; orphans:0; text-align:justify; widows:0"><span style="font-family:Calibri; font-size:10.5pt">&nbsp;</span></p></td>
+         </tr>
+         <tr style="height:5.8pt">
+          <td colspan="3" style="border-left-color:#000000; border-left-style:solid; border-left-width:0.75pt; border-right-color:#000000; border-right-style:solid; border-right-width:0.75pt; padding-left:5.03pt; padding-right:5.03pt; vertical-align:top; width:514.75pt"><p style="margin:0pt; orphans:0; text-align:justify; widows:0"><span style="font-family:Calibri; font-size:10.5pt">&nbsp;</span></p></td>
+         </tr>
+         <tr style="height:5.8pt">
+          <td colspan="3" style="border-bottom-color:#000000; border-bottom-style:solid; border-bottom-width:0.75pt; border-left-color:#000000; border-left-style:solid; border-left-width:0.75pt; border-right-color:#000000; border-right-style:solid; border-right-width:0.75pt; padding-left:5.03pt; padding-right:5.03pt; vertical-align:top; width:514.75pt"><p style="margin:0pt; orphans:0; text-align:justify; widows:0"><span style="font-family:Calibri; font-size:10.5pt">&nbsp;</span></p></td>
+         </tr>
+         <tr style="height:18.85pt">
+          <td colspan="3" style="border-bottom-color:#000000; border-bottom-style:solid; border-bottom-width:0.75pt; border-left-color:#000000; border-left-style:solid; border-left-width:0.75pt; border-right-color:#000000; border-right-style:solid; border-right-width:0.75pt; border-top-color:#000000; border-top-style:solid; border-top-width:0.75pt; padding-left:5.03pt; padding-right:5.03pt; vertical-align:top; width:514.75pt"><p style="margin:0pt; orphans:0; text-align:justify; widows:0"><span style="font-family:宋体; font-size:10.5pt">
+          	金额</span><span style="font-family:Calibri; font-size:10.5pt">
+          	
+          </span><span style="font-family:宋体; font-size:10.5pt">（人民币大写）：</span>
+          <span style="font-family:宋体; font-size:10.5pt">${bigMoney}</span>
+          <span style="font-family:宋体; font-size:10.5pt">&nbsp;&nbsp;&nbsp;&nbsp;
+                                  金额</span><span style="font-family:Calibri; font-size:10.5pt">
+		  </span><span style="font-family:宋体; font-size:10.5pt">(人民币小写)：</span>
+		  <span style="font-family:宋体;  font-size:10.5pt">￥${smallMoney}</span>
+		  </p></td>
+		  
+		  
+         </tr>
+         <tr style="height:18.85pt">
+          <td style="border-bottom-color:#000000; border-bottom-style:solid; border-bottom-width:0.75pt; border-left-color:#000000; border-left-style:solid; border-left-width:0.75pt; border-right-color:#000000; border-right-style:solid; border-right-width:0.75pt; border-top-color:#000000; border-top-style:solid; border-top-width:0.75pt; padding-left:5.03pt; padding-right:5.03pt; vertical-align:top; width:41.6pt"><p style="margin:0pt; orphans:0; text-align:justify; widows:0"><span style="font-family:宋体; font-size:10.5pt">备注：</span></p></td>
+          <td colspan="2" style="border-bottom-color:#000000; border-bottom-style:solid; border-bottom-width:0.75pt; border-left-color:#000000; border-left-style:solid; border-left-width:0.75pt; border-right-color:#000000; border-right-style:solid; border-right-width:0.75pt; border-top-color:#000000; border-top-style:solid; border-top-width:0.75pt; padding-left:5.03pt; padding-right:5.03pt; vertical-align:top; width:462.35pt"><p style="margin:0pt; orphans:0; text-align:justify; widows:0"><span style="color:#ff0000; font-family:Calibri; font-size:10.5pt">${returnRe.remark}</span></p></td>
+         </tr>
+         <tr style="height:24.6pt">
+          <td colspan="3" style="border-bottom-color:#000000; border-bottom-style:solid; 
+          border-bottom-width:0.75pt; border-left-color:#000000; border-left-style:solid; 
+          border-left-width:0.75pt; border-right-color:#000000; border-right-style:solid; 
+          border-right-width:0.75pt; border-top-color:#000000; border-top-style:solid; 
+          border-top-width:0.75pt; padding-left:5.03pt; padding-right:5.03pt; 
+          vertical-align:top; width:514.75pt">
+          
+          <p style="font-size:9pt; line-height:150%; margin:0pt; orphans:0; text-align:justify; widows:0">
+          <span style="font-family:宋体; font-size:9pt">&nbsp;</span>
+          <span style="font-family:宋体; font-size:9pt">现金</span>
+          	    <c:if test="${returnRe.payway =='现金'}">
+	          		<span style="font-family:宋体; font-size:9pt">█&nbsp;</span>
+				</c:if>
+				<c:if test="${returnRe.payway !='现金'}">
+	          		<span style="font-family:宋体; font-size:9pt">□&nbsp;</span>
+				</c:if>
+          <span style="font-family:宋体; font-size:9pt">银行卡</span>
+         	 	<c:if test="${returnRe.payway =='刷卡'}">
+	          		<span style="font-family:宋体; font-size:9pt">█&nbsp;</span>
+				</c:if>
+				<c:if test="${returnRe.payway !='刷卡'}">
+	          		<span style="font-family:宋体; font-size:9pt">□&nbsp;</span>
+				</c:if>
+          <span style="font-family:宋体; font-size:9pt">支付宝</span>
+				<c:if test="${returnRe.payway =='支付宝'}">
+	          		<span style="font-family:宋体; font-size:9pt">█&nbsp;</span>
+				</c:if>
+				<c:if test="${returnRe.payway !='支付宝'}">
+	          		<span style="font-family:宋体; font-size:9pt">□&nbsp;</span>
+				</c:if>
+          <span style="font-family:宋体; font-size:9pt">微信</span>
+				<c:if test="${returnRe.payway =='微信'}">
+	          		<span style="font-family:宋体; font-size:9pt">█&nbsp;</span>
+				</c:if>
+				<c:if test="${returnRe.payway !='微信'}">
+	          		<span style="font-family:宋体; font-size:9pt">□&nbsp;</span>
+				</c:if>
+		 <span style="font-family:宋体; font-size:9pt">其他</span>
+				<c:if test="${returnRe.payway =='其他'}">
+	          		<span style="font-family:宋体; font-size:9pt">█&nbsp;</span>
+				</c:if>
+				<c:if test="${returnRe.payway !='其他'}">
+	          		<span style="font-family:宋体; font-size:9pt">□&nbsp;</span>
+				</c:if>		
+          </p></td>
+         
+         </tr>
+         <tr style="height:18.4pt">
+          <td colspan="3" style="border-bottom-color:#000000; 
+          border-bottom-style:solid; border-bottom-width:0.75pt; 
+          border-left-color:#000000; border-left-style:solid; 
+          border-left-width:0.75pt; border-right-color:#000000; 
+          border-right-style:solid; border-right-width:0.75pt; 
+          border-top-color:#000000; border-top-style:solid; 
+          border-top-width:0.75pt; padding-left:5.03pt; 
+          padding-right:5.03pt; vertical-align:top; width:514.75pt">
+          
+          <p style="font-size:9pt; line-height:150%; margin:0pt; orphans:0; text-align:justify; widows:0">
+          
+          	<span style="font-family:宋体; font-size:9pt">&nbsp;</span>
+          	
+          	<span style="font-family:宋体; font-size:9pt">拈香</span>
+	          	<c:if test="${returnRe.size=='拈香'}">
+	          		<span style="font-family:宋体; font-size:9pt">█&nbsp;</span>
+				</c:if>
+				<c:if test="${returnRe.size!='拈香'}">
+	          		<span style="font-family:宋体; font-size:9pt">□&nbsp;</span>
+				</c:if>
+          	<span style="font-family:宋体; font-size:9pt">大&nbsp;牌</span>
+	          	<c:if test="${returnRe.size=='大'}">
+	          		<span style="font-family:宋体; font-size:9pt">█&nbsp;</span>
+				</c:if>
+	          	<c:if test="${returnRe.size!='大'}">
+	          		<span style="font-family:宋体; font-size:9pt">□&nbsp;</span>
+				</c:if>
+          	<span style="font-family:宋体; font-size:9pt">小&nbsp;牌</span>
+	          	<c:if test="${returnRe.size=='小'}">
+	          		<span style="font-family:宋体; font-size:9pt">█&nbsp;</span>
+				</c:if>
+	          	<c:if test="${returnRe.size!='小'}">
+	          		<span style="font-family:宋体; font-size:9pt">□&nbsp;</span>
+				</c:if>
+          	<span style="font-family:宋体; font-size:9pt">其他</span>
+          		<c:if test="${returnRe.size=='其他'}">
+	          		<span style="font-family:宋体; font-size:9pt">█&nbsp;</span>
+				</c:if>
+	          	<c:if test="${returnRe.size!='其他'}">
+	          		<span style="font-family:宋体; font-size:9pt">□&nbsp;</span>
+				</c:if>
+          </p></td>
+        
+         </tr>
+         <tr style="height:11.95pt">
+          <td colspan="3" style="border-bottom-color:#000000; border-bottom-style:solid; border-bottom-width:0.75pt; border-left-color:#000000; border-left-style:solid; border-left-width:0.75pt; border-right-color:#000000; border-right-style:solid; border-right-width:0.75pt; border-top-color:#000000; border-top-style:solid; border-top-width:0.75pt; padding-left:5.03pt; padding-right:5.03pt; vertical-align:top; width:514.75pt">
+          	<p style="margin:0pt; orphans:0; text-align:justify; widows:0">
+	          <span style="font-family:宋体; font-size:10.5pt">会计：</span>
+	          <span style="font-family:宋体; font-size:10.5pt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>
+	          <span style="font-family:宋体; font-size:10.5pt">出纳：</span>
+	          <span style="font-family:宋体; font-size:10.5pt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>
+	          <span style="font-family:宋体; font-size:10.5pt">经手人：</span>
+          	</p>
+          </td>
+         </tr>
+         <tr style="height:0pt">
+          <td style="width:52.4pt; border:none"></td>
+          <td style="width:284.1pt; border:none"></td>
+          <td style="width:189.3pt; border:none"></td>
+         </tr>
+        </tbody>
+       </table><p style="margin:0pt; orphans:0; text-align:justify; widows:0"></p></td>
+	      <td style="padding-left:5.4pt; padding-right:5.4pt; vertical-align:top; width:17.55pt">
+		      <p style="margin:0pt; orphans:0; text-align:justify; widows:0">
+		      <span style="font-family:Calibri; font-size:10.5pt">&nbsp;</span></p>
+		      <p style="margin:0pt; orphans:0; text-align:justify; widows:0">
+		      <span style="font-family:Calibri; font-size:10.5pt">&nbsp;</span></p>
+		      <p style="margin:0pt; orphans:0; text-align:justify; widows:0">
+		      <span style="font-family:宋体; font-size:10.5pt">第一联</span></p>
+		      <p style="margin:0pt; orphans:0; text-align:justify; widows:0">
+		      <span style="font-family:Calibri; font-size:10.5pt">&nbsp;</span></p>
+		      <p style="margin:0pt; orphans:0; text-align:justify; widows:0">
+		      <span style="font-family:宋体; font-size:10.5pt">存根</span></p>
+	      </td>
+     </tr>
+     <tr style="height:11.35pt">
+      <td style="padding-left:5.4pt; padding-right:5.4pt; vertical-align:top; width:6.2pt"><p style="margin:0pt; orphans:0; text-align:justify; widows:0"><span style="font-family:Calibri; font-size:10.5pt">&nbsp;</span></p></td>
+      <td style="padding-left:5.4pt; padding-right:5.4pt; vertical-align:top; width:522.2pt"><p style="margin:0pt; orphans:0; text-align:center; widows:0"><span style="font-family:华文隶书; font-size:7.5pt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 地址：广州市越秀区六榕路87号&nbsp;&nbsp;&nbsp; 电话020-83158888</span></p></td>
+      <td style="padding-left:5.4pt; padding-right:5.4pt; vertical-align:top; width:17.55pt"><p style="margin:0pt; orphans:0; text-align:justify; widows:0"><span style="font-family:华文隶书; font-size:10.5pt">&nbsp;</span></p></td>
+     </tr>
+     <tr style="height:3.7pt">
+      <td style="padding-left:5.4pt; padding-right:5.4pt; vertical-align:top; width:6.2pt"><p style="margin:0pt; orphans:0; text-align:justify; widows:0"><span style="font-family:Calibri; font-size:5pt">&nbsp;</span></p></td>
+      <td style="padding-left:5.4pt; padding-right:5.4pt; vertical-align:top; width:522.2pt"><p style="margin:0pt; orphans:0; text-align:justify; widows:0"><span style="font-family:Calibri; font-size:5pt">&nbsp;</span></p></td>
+      <td style="padding-left:5.4pt; padding-right:5.4pt; vertical-align:top; width:17.55pt"><p style="margin:0pt; orphans:0; text-align:justify; widows:0"><span style="font-family:Calibri; font-size:5pt">&nbsp;</span></p></td>
+     </tr>
+    </tbody>
+   </table>
+   <p style="margin:0pt; orphans:0; text-align:justify; widows:0"><span style="font-family:Calibri; font-size:10.5pt">&nbsp;</span></p>
+   <p style="margin:0pt; orphans:0; text-align:justify; widows:0"><span style="font-family:Calibri; font-size:10.5pt">&nbsp;</span></p>
+   <p style="margin:0pt; orphans:0; text-align:justify; widows:0"><span style="font-family:Calibri; font-size:10.5pt">&nbsp;</span></p>
+   <p style="margin:0pt; orphans:0; text-align:justify; widows:0"><span style="font-family:Calibri; font-size:10.5pt">&nbsp;</span></p>
+   <p style="margin:0pt; orphans:0; text-align:justify; widows:0"><span style="font-family:Calibri; font-size:10.5pt">&nbsp;</span></p>
+   <p style="margin:0pt; orphans:0; text-align:justify; widows:0"><span style="font-family:Calibri; font-size:10.5pt">&nbsp;</span></p>
+   <p style="margin:0pt; orphans:0; text-align:justify; widows:0"><span style="font-family:Calibri; font-size:10.5pt">&nbsp;</span></p>
+   <p style="margin:0pt; orphans:0; text-align:justify; widows:0"><span style="font-family:Calibri; font-size:10.5pt">&nbsp;</span></p>
+   <p style="margin:0pt; orphans:0; text-align:justify; text-indent:21pt; widows:0"><span style="font-family:Calibri; font-size:10.5pt">&nbsp;</span></p>
+   <p style="margin:0pt; orphans:0; text-align:justify; widows:0"><span style="font-family:Calibri; font-size:10.5pt">&nbsp;</span></p>
+   </div>
+    <div class="r">
+        <button type="button" value="打印" style="width: 80px; height: 35px;" onclick="printInfo()">打印</button>
+    </div>
+<!-- <button id="btn_sub"  style=" margin-top:460px; margin-left:320px;"  onclick="printOrder()">打印</button> -->
+	</body>
+  </body>
+</html>

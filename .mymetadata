@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-module
+  type="WEB"
+  name="lrs"
+  id="myeclipse.1393505399637"
+  context-root="/lrs"
+  j2ee-spec="5.0"
+  archive="lrs.war">
+  <attributes>
+    <attribute name="webrootdir" value="WebRoot" />
+  </attributes>
+</project-module>
+

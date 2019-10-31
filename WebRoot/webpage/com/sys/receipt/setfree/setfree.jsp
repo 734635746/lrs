@@ -1,0 +1,345 @@
+<%@ page language="java" import="java.util.*"
+	contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@include file="/context/mytags.jsp"%>
+<!DOCTYPE html>
+<html>
+<head>
+<title>放生登记</title>
+<t:base type="jquery,easyui,tools,DatePicker"></t:base>
+<link rel="stylesheet" type="text/css"
+	href="${pageContext.request.contextPath}/resources/css/table.css">
+<link rel="stylesheet" type="text/css"
+	href="${pageContext.request.contextPath}/resources/css/button.css">
+<script
+	src="${pageContext.request.contextPath}/resources/js/calendar.js"></script>
+<script type="text/javascript">
+	var index = 0;
+	var tr1;
+	var tr_clone;
+	function toPharmacistbirth() {
+		var id = document.getElementById("id").value;
+		window.location.href = "${pageContext.request.contextPath}/pharmacistbirthController.do?redirectToPharmacistbirth&id=" + id;
+	}
+
+	function LinktoPharmacistbirth(ritualid) {
+		var id = document.getElementById("id").value;
+		window.location.href = "${pageContext.request.contextPath}/pharmacistbirthController.do?redirectToPharmacistbirthByRitualid&id=" + id + "&ritualid=" + ritualid;
+	}
+
+	function comfirm() {
+		var receiptids = "";
+		$("[name='checkbox']:checked").each(function() {
+			receiptids += $(this).val() + ",";
+		});
+		alert(receiptids);
+	}
+	function onShow(index) {
+		document.getElementById("form").style.display = "block";
+	/* document.getElementById("rowindex").value = index;
+	alert("=========");
+	alert(document.getElementById("rowindex").value); */
+	}
+
+	function onHide() {
+		document.getElementById("form").style.display = "none";
+		index = 0;
+	/* document.getElementById("rowindex").value = ""; */
+	}
+	//获取复选框选中的值
+	function getLivingMemberListSelections() {
+		var livingMemberList = "";
+		var livingString = "";
+		$("#livingtable :checkbox").each(function() {
+			if (this.checked) {
+				var input0 = $.trim($(this).parent().next().find("input").val());
+				var input1 = $.trim($(this).parent().next().next().find("input").val());
+				if (input0 == "" && input1 == "") {
+					livingMemberList += "";
+				} else {
+					if (input0 == "") {
+						livingMemberList += input1 + ";";
+					} else {
+						livingMemberList += input0 + ":" + input1 + ";";
+					}
+				}
+				if (input0 == "")
+					input0 = "无";
+				if (input1 == "")
+					input1 = "无";
+				livingString = livingString + input0 + "|" + input1 + "|";
+			}
+		});
+		$(document.getElementById("receipttable").rows[index].cells[2]).find('input').val(livingMemberList);
+		generateSummary(livingMemberList, index);
+	}
+	function generateSummary(livingMemberList, index) {
+		$(document.getElementById("receipttable").rows[index].cells[7]).find('textarea').val(livingMemberList);
+	}
+	$(function() {
+		tr1 = $("#receipttable tr").clone();
+		tr_clone = tr1[1];
+		//全选
+		$("#SelectAncestorAll").click(function() {
+			$('[name=ancestor]:checkbox').attr("checked", this.checked);
+		});
+		$("#SelectLivingAll").click(function() {
+			$('[name=living]:checkbox').attr("checked", this.checked);
+		});
+	});
+	function getSelected(current_Tr) {
+		onShow();
+		index = $.trim($(current_Tr).parent()[0].rowIndex);
+
+		var liviingmemberString = $(document.getElementById("receipttable").rows[index].cells[2]).find('input').val();
+		var oneLivingMember = liviingmemberString.substring(0, liviingmemberString.length - 1).split(";");
+		for (var i = 0; i < oneLivingMember.length; i++) {
+			if (oneLivingMember[i].indexOf(":") > 0) {
+				var oneLivingMemberSplitBySymbol = oneLivingMember[i].split(":");
+				document.getElementById("call" + (i + 1)).value = oneLivingMemberSplitBySymbol[0];
+				document.getElementById("name" + (i + 1)).value = oneLivingMemberSplitBySymbol[1];
+			} else {
+				document.getElementById("call" + (i + 1)).value = "";
+				document.getElementById("name" + (i + 1)).value = oneLivingMember[i];
+			}
+		}
+
+	}
+	function getLivingMemberList() {
+		var rowcount = document.getElementById("livingtable").rows.length;
+		var tr = document.getElementById("livingtable").getElementsByTagName("tr");
+		for (var i = 1; i < rowcount; i++) {
+			var obj = tr[i].getElementsByTagName("td")[1].children[0].value;
+			if (parseInt(obj.length) > 8) {
+				alert("提示 ： 祈福对象名字只能输入小于8个字符");
+				return false;
+			}
+		}
+
+		var updateLivingString = "";
+		for (var i = 1; i <= 5; i++) {
+			var call = document.getElementById("call" + i).value;
+			var name = document.getElementById("name" + i).value;
+			if (call != "" || name != "") {
+				if (call != "") {
+					updateLivingString += call + ":" + name + ";";
+				} else {
+					updateLivingString += name + ";";
+				}
+			}
+		}
+		$(document.getElementById("receipttable").rows[index].cells[2]).find('input').val(updateLivingString);
+		generateSummary(updateLivingString, index);
+		onHide();
+	}
+	function changeSize(size) {
+		alert("注意： 切换成" + size + "牌登记");
+		if (size == "小") {
+			document.getElementById("add").style.display = "block";
+			document.getElementById("delete").style.display = "block"
+			document.getElementById("_book").style.display = "none";
+		} else {
+			document.getElementById("add").style.display = "none";
+			document.getElementById("delete").style.display = "none"
+			document.getElementById("_book").style.display = "block";
+		}
+
+	}
+
+	function addTr() {
+		var tr = $("#receipttable tr").clone();
+		if (tr[1] == null) {
+			$("#receipttable").append(tr_clone);
+		} else {
+			$("#receipttable").append(tr[1]);
+		}
+	}
+	function deteleTr() {
+		$("#receipttable").find("input:checked").parent().parent().remove();
+	}
+
+	function preview() {
+		var tableObj = document.getElementById("preview_table");
+
+		var arr = document.getElementById("preview_table").getElementsByTagName("tr");
+		for (var i = arr.length - 1; i > 0; i--) {
+			tableObj.deleteRow(i);
+		}
+
+		var rowcount = document.getElementById("receipttable").rows.length;
+		var cowcount = document.getElementById("receipttable").rows[0].cells.length;
+		var tr = document.getElementById("receipttable").getElementsByTagName("tr");
+		for (var i = 1; i < rowcount; i++) {
+			var pre_row = tableObj.insertRow();
+			for (var j = 1; j < cowcount - 1; j++) {
+				var pre_cow = pre_row.insertCell(j - 1);
+				pre_cow.innerHTML = tr[i].getElementsByTagName("td")[j].children[0].value;
+
+			}
+
+		}
+		document.getElementById("preview_form").style.display = "block";
+
+	}
+	function hide() {
+		var tableObj = document.getElementById("preview_table");
+		var arr = document.getElementById("preview_table").getElementsByTagName("tr");
+		for (var i = arr.length - 1; i > 0; i--) {
+			tableObj.deleteRow(i);
+		}
+		document.getElementById("preview_form").style.display = "none";
+	}
+
+	function myvalidate() {
+		var rowcount = document.getElementById("receipttable").rows.length;
+		var tr = document.getElementById("receipttable").getElementsByTagName("tr");
+
+		for (var i = 1; i < rowcount; i++) {
+			if (!(/(^[1-9]\d*$)/.test(tr[i].getElementsByTagName("td")[5].children[0].value))) {
+				alert("请输入合法的金钱数目，第" + (i + 1) + "行的钱的数目不是正整数");
+				return false;
+			}
+		}
+
+		var r = window.confirm("确定填写信息没错吗？确定后不可以修改，可以预览信息");
+		if (r == true) {
+			return true;
+		} else {
+			return false;
+		}
+
+	}
+
+	function changeSolarToLunar(currentNode) {
+		//alert("yes");
+		var solardate = currentNode.value;
+		//console.log(solardate);
+		var arr = new Array();
+		arr = solardate.split("-");
+		//alert(arr[0]);
+		var lunar = calendar.solar2lunar(arr[0], arr[1], arr[2]);
+		//alert('农历：'+lunar.lYear + '年' +lunar.IMonthCn+lunar.IDayCn);
+		//console.log(currentNode);
+		var lunardate = currentNode.parentNode.parentNode.children[3].children[0];
+		//console.log(lunardate);
+		lunardate.value = lunar.gzYear + "年" + lunar.IMonthCn + lunar.IDayCn;
+	//$("#lunardate").val(lunar.lYear + '年' +lunar.IMonthCn+lunar.IDayCn);
+	
+	}
+	
+	function changSumary(currentNode){
+		var sumary = "${clientele}交来农历";
+		var rowcount = document.getElementById("receipttable").rows.length;
+		var tr = document.getElementById("receipttable").getElementsByTagName("tr");
+		var date = '';
+		for (var i = 1; i < rowcount; i++) {
+			date += tr[i].getElementsByTagName("td")[3].children[0].value + "，";
+		}
+		date = date.substring(0, date.length - 1);
+		sumary += (date + "放生功德款");
+		tr[1].getElementsByTagName("textarea")[0].value = sumary;
+ 	}
+ 	
+ 	function changMoney(){
+ 		var moneySelect = document.getElementById("money-select").value;
+ 		var rowcount = document.getElementById("receipttable").rows.length;
+		var tr = document.getElementById("receipttable").getElementsByTagName("tr");
+		
+		for (var i = 1; i < rowcount; i++) {
+			tr[i].getElementsByTagName("td")[5].children[0].value = moneySelect;
+		}
+ 	}
+	
+</script>
+
+<style type="text/css">
+#form {
+	width: 300px;
+	height: 150px;
+	margin: 0px auto;
+	margin-bottom: 20px;
+	border: 1px solid white;
+	background-color: white;
+	position: absolute; /*绝对对齐*/
+	z-index: 1000;
+	left: 240px;
+}
+
+#form h5 {
+	margin: 1px;
+	background-color: white;
+	height: 24px;
+}
+</style>
+</head>
+<body style="overflow-y: scroll" scroll="yes">
+	<h4>放生登记</h4>
+	<span> <!-- <input type="button" value="预览" class="button" onclick = "preview()"> -->
+		<c:if test="${empty morningpforrEntity}">
+			<!-- 编辑的时候不需要添加功能 -->
+			<input type="button" id="add" value="添加记录" class="button"
+				onclick="addTr()">
+			<input type="button" id="delete" value="撤销记录" class="button"
+				onclick="deteleTr()">
+		</c:if> </span>
+	<br>
+	<br>
+
+
+	<center>
+		<form
+			action="${pageContext.request.contextPath}/setFreeController.do?saveSetFree"
+			onsubmit="return myvalidate()" method="post">
+			<input id="id" name="id" type="hidden" value="${id}"> 付款人:<input
+				style="width:100px;" type="text" id="paymen" name="paymen"
+				value="${clientele}" required> 金额：<select id="money-select"
+				name="money-select" onchange="changMoney();">
+				<option value="100">100</option>
+				<option value="200">200</option>
+				<option value="300">300</option>
+				<option value="400">400</option>
+				<option value="500">500</option>
+			</select> <br> <br>
+			<table id="receipttable" class="imagetable">
+				<th>选择</th>
+				<th>信众</th>
+				<!-- <th>阳上</th> -->
+				<th>放生日期</th>
+				<th>农历</th>
+				<th>祈福对象</th>
+				<th>金额</th>
+				<th>付款方式</th>
+				<th>摘要</th>
+				</tr>
+				<tr>
+					<td><input style="width:20px;" type="checkbox" /></td>
+					<td><input style="width:60px;" type="text" id="prayingobj"
+						name="prayingobj" value="${clientele}"></td>
+					<!-- 公历 -->
+					<td><input type="date" id="solardate" name="solardate"
+						value="" onchange="changeSolarToLunar(this)"></td>
+					<!-- 农历 -->
+					<td><input type="text" id="lunardate" name="lunardate"
+						value="" placeholder="选择公历自动生成农历">
+					</td>
+					<td><input type="text"
+						name="livingmenber" id="livingmenber"></td>
+					<td><input style="width:40px;" type="text" id="money"
+						name="money" value="100" required readonly="readonly"></td>
+					<td><select style="width:60px;" id="payway" name="payway">
+							<option value="现金">现金</option>
+							<option value="刷卡">刷卡</option>
+							<option value="支付宝">支付宝</option>
+							<option value="微信">微信</option>
+							<option value="其他">其他</option>
+					</select></td>
+
+					<td><textarea rows="3" cols="60" id="summary" name="summary"
+							onclick="changSumary();"></textarea></td>
+				</tr>
+
+			</table>
+			<br> <br> <input type="submit" value="确定" class="button">
+		</form>
+
+	</center>
+</body>

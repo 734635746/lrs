@@ -1,0 +1,22 @@
+.button1 {
+	background: yellow repeat-x top center;
+	border: 1px solid #999;
+	-moz-border-radius: 5px;
+	padding: 5px;
+	color: black;
+	font-weight: bold;
+	-webkit-border-radius: 5px;
+	font-size: 13px;
+	width: 80px;
+	opacity: .6;
+}
+
+.button1:hover {
+	background: white;
+	color: blue;
+}
+
+.button1:active {
+	background: white;
+	color: red;
+}
