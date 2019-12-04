@@ -659,19 +659,36 @@ public class BuddhabirthController extends BaseController {
 				String dateString = formatter.format(currentTime);
 				 //20190615 kooking
 				SimpleDateFormat formatter1 = new SimpleDateFormat("yyyy年MM月dd日");
+				//当前日期
 				String dateString1 = formatter1.format(currentTime);
 				 //20190615 kooking
 				
 				
+				/**
+				 * x=当前月份
+				 * if(x<3){
+				 * 	统计日期 x.year-1.4.1 ~ 当前日期 
+				 * }else if(x>=4){
+				 * 	统计日期 x.year.4.1 ~ 当前日期
+				 * }
+				 */
+				//当前月份
 				
-                int mon=cal.get(Calendar.MONTH);
-                
-                if(mon<3)
-                	year=cal.get(Calendar.YEAR)-1;
+				int mon = cal.get(Calendar.MONTH)+1; //2019.12.4
+				if(mon<3) {//1、2月份
+					year = cal.get(Calendar.YEAR)-1;
+				}else if(mon>=4) {//4月份~12月份
+					year = cal.get(Calendar.YEAR);
+				}
+//                int mon=cal.get(Calendar.MONTH);
+//                
+//                if(mon<3)
+//                	year=cal.get(Calendar.YEAR)-1;
+				
                 
 //				String begin_date= String.valueOf(year) + "-03-01";  //20190615 kooking
-				String begin_date= String.valueOf(year) + "年03月01日";
-				
+//				String begin_date= String.valueOf(year) + "年03月01日";
+				String begin_date= String.valueOf(year) + "年04月01日";
 
 
 				for (int i = 0; i < size.length; i++) {
@@ -759,15 +776,31 @@ public class BuddhabirthController extends BaseController {
 				String dateString1 = formatter1.format(currentTime);
 				 //20190615 kooking
 
+				/**
+				 * x=当前月份
+				 * if(x<3){
+				 * 	统计日期 x.year-1.4.1 ~ 当前日期 
+				 * }else if(x>=4){
+				 * 	统计日期 x.year.4.1 ~ 当前日期
+				 * }
+				 */
+				//当前月份
 				
+				int mon = cal.get(Calendar.MONTH)+1; //2019.12.4
+				if(mon<3) {//1、2月份
+					year = cal.get(Calendar.YEAR)-1;
+				}else if(mon>=4) {//4月份~12月份
+					year = cal.get(Calendar.YEAR);
+				}
 				
-				  int mon=cal.get(Calendar.MONTH);
-	                
-	                if(mon<3)
-	                	year=cal.get(Calendar.YEAR)-1;
+//				  int mon=cal.get(Calendar.MONTH);
+//	                
+//	                if(mon<3)
+//	                	year=cal.get(Calendar.YEAR)-1;
 	                
 //					String begin_date= String.valueOf(year) + "-03-01"; //20190615 kooking
-	                String begin_date= String.valueOf(year) + "年03月01日";
+//	                String begin_date= String.valueOf(year) + "年03月01日";
+				String begin_date= String.valueOf(year) + "年04月01日";
 				BuddhabirthEntity buddhabirthEntity = new BuddhabirthEntity();
 				CriteriaQuery cq = new CriteriaQuery(BuddhabirthEntity.class);
 				cq.add(Restrictions.and(Restrictions.eq("size", sizeflag),

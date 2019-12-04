@@ -31,7 +31,7 @@
 	
 	function changeSummary(){
 		var paymen = document.getElementById("paymen").value;
-		document.getElementById("summary").value = paymen + "交来开光功德款";
+		document.getElementById("summary").value = paymen + "交来大殿祈福功德款";
 	}
   </script>
  </head>
